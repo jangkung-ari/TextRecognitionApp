@@ -16,8 +16,8 @@ import com.arimukti.qasirqu.presentation.viewmodel.NewsViewModel
 
 class InfoFragment : Fragment() {
 
-    private lateinit var article : Article
-    private lateinit var bindng : FragmentInfoBinding
+    private lateinit var article: Article
+    private lateinit var bindng: FragmentInfoBinding
     private lateinit var viewModel: NewsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,9 +44,9 @@ class InfoFragment : Fragment() {
 
         bindng.infoBookmark.setOnClickListener {
             viewModel.saveArticle(article)
-            Snackbar.make(view,"Save Successfully!",Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(view, "Save Successfully!", Snackbar.LENGTH_SHORT).show()
         }
-        
+
         bindng.infoViewWeb.setOnClickListener {
             val action = InfoFragmentDirections.actionInfoFragmentToWebViewFragment(article)
             findNavController().navigate(action)
@@ -66,7 +66,6 @@ class InfoFragment : Fragment() {
         }
 
 
-
     }
 
     private fun setDetails() {
@@ -76,8 +75,6 @@ class InfoFragment : Fragment() {
         Glide.with(bindng.infoImageView)
             .load(article.urlToImage)
             .into(bindng.infoImageView)
-
-
     }
 
 }

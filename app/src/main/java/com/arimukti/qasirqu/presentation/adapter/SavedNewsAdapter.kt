@@ -23,11 +23,12 @@ class SavedNewsAdapter : RecyclerView.Adapter<SavedNewsAdapter.SavedNewsViewHold
 
     }
 
-    val differ = AsyncListDiffer(this,callback)
+    val differ = AsyncListDiffer(this, callback)
 
-    inner class SavedNewsViewHolder(private val binding : SavedNewsListItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bindData(article: Article){
-            binding.savedNewsListCategory.text = "${ article.source?.name }"
+    inner class SavedNewsViewHolder(private val binding: SavedNewsListItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bindData(article: Article) {
+            binding.savedNewsListCategory.text = "${article.source?.name}"
             binding.savedNewsListTitle.text = article.title
             Glide.with(binding.savedNewsListImage.context)
                 .load(article.urlToImage)
@@ -40,14 +41,15 @@ class SavedNewsAdapter : RecyclerView.Adapter<SavedNewsAdapter.SavedNewsViewHold
         }
     }
 
-    private var onItemClickListener : ((Article?)->Unit)? = null
+    private var onItemClickListener: ((Article?) -> Unit)? = null
 
-    fun setOnItemClickListener(listener : (Article?)->Unit){
+    fun setOnItemClickListener(listener: (Article?) -> Unit) {
         onItemClickListener = listener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SavedNewsViewHolder {
-        val binding = SavedNewsListItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding =
+            SavedNewsListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return SavedNewsViewHolder(binding)
     }
 

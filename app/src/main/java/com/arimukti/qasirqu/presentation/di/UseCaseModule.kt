@@ -15,31 +15,31 @@ class UseCaseModule {
 
     @Singleton
     @Provides
-    fun provideNewsHeadlines(newsRepository: NewsRepository) : GetNewsHeadlineUseCase {
+    fun provideNewsHeadlines(newsRepository: NewsRepository): GetNewsHeadlineUseCase {
         return GetNewsHeadlineUseCase(newsRepository)
     }
 
     @Singleton
     @Provides
-    fun providesSearchedNewsHeadlines(newsRepository: NewsRepository) : GetSearchedNewsUseCase {
+    fun providesSearchedNewsHeadlines(newsRepository: NewsRepository): GetSearchedNewsUseCase {
         return GetSearchedNewsUseCase(newsRepository)
     }
 
     @Singleton
     @Provides
-    fun providesSavedNews(newsRepository: NewsRepository) : SaveNewsUseCase {
+    fun providesSavedNews(newsRepository: NewsRepository): SaveNewsUseCase {
         return SaveNewsUseCase(newsRepository)
     }
 
     @Singleton
     @Provides
-    fun providesGetSavedNewsUseCase(newsRepository: NewsRepository) : GetSaveNewsUseCase {
+    fun providesGetSavedNewsUseCase(newsRepository: NewsRepository): GetSaveNewsUseCase {
         return GetSaveNewsUseCase(newsRepository)
     }
 
     @Singleton
     @Provides
-    fun providesDeleteNewsUseCase(newsRepository: NewsRepository) : DeleteSaveNewsUseCase {
+    fun providesDeleteNewsUseCase(newsRepository: NewsRepository): DeleteSaveNewsUseCase {
         return DeleteSaveNewsUseCase(newsRepository)
     }
 

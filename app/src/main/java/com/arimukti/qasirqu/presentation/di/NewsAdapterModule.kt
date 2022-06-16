@@ -12,7 +12,7 @@ import javax.inject.Singleton
 class NewsAdapterModule {
     @Singleton
     @Provides
-    fun provideNewsAdapter() : NewsAdapter {
+    fun provideNewsAdapter(): NewsAdapter {
         return NewsAdapter()
     }
 

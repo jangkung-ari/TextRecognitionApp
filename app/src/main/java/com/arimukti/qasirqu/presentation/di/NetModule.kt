@@ -16,7 +16,7 @@ class NetModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit() : Retrofit{
+    fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl(BuildConfig.BASE_URL)
@@ -25,7 +25,7 @@ class NetModule {
 
     @Singleton
     @Provides
-    fun providesNewsApiService(retrofit: Retrofit) : NewsApiService {
+    fun providesNewsApiService(retrofit: Retrofit): NewsApiService {
         return retrofit.create(NewsApiService::class.java)
     }
 

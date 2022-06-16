@@ -22,10 +22,11 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
     }
 
-    val differ = AsyncListDiffer(this,callback)
+    val differ = AsyncListDiffer(this, callback)
 
-    inner class NewsViewHolder(private val binding : NewsListItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bindData(article: Article){
+    inner class NewsViewHolder(private val binding: NewsListItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bindData(article: Article) {
             binding.newsListTitle.text = article.title
             Glide.with(binding.newsListImage.context)
                 .load(article.urlToImage)
@@ -43,19 +44,20 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
         }
     }
 
-    private var onItemClickListener : ((Article?)-> Unit)? = null
-    private var onBookmarkClickListener : ((Article?)-> Unit)? = null
+    private var onItemClickListener: ((Article?) -> Unit)? = null
+    private var onBookmarkClickListener: ((Article?) -> Unit)? = null
 
-    fun setOnItemClickListener(listener : (Article?)-> Unit){
+    fun setOnItemClickListener(listener: (Article?) -> Unit) {
         onItemClickListener = listener
     }
 
-    fun setOnBookmarkClickListener(listener : (Article?)-> Unit){
+    fun setOnBookmarkClickListener(listener: (Article?) -> Unit) {
         onBookmarkClickListener = listener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
-        val binding = NewsListItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding =
+            NewsListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return NewsViewHolder(binding)
     }
 

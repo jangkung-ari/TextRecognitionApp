@@ -13,17 +13,33 @@ class NewsRepositoryImpl(
     private val remoteDataSource: NewsRemoteDataSource,
     private val newsLocalDataSource: NewsLocalDataSource
 ) : NewsRepository {
-    override suspend fun getNewsHeadlines(country : String, page : Int, category : String): Resource<ApiResponse> {
+    override suspend fun getNewsHeadlines(
+        country: String,
+        page: Int,
+        category: String
+    ): Resource<ApiResponse> {
         return responseToResult(remoteDataSource.getTopHeadlines(country, page, category))
     }
 
-    override suspend fun getSearchedNews(country: String, page: Int, category: String, searchQuery: String): Resource<ApiResponse> {
-        return responseToResult(remoteDataSource.getSearchedNews(country, page, searchQuery, category))
+    override suspend fun getSearchedNews(
+        country: String,
+        page: Int,
+        category: String,
+        searchQuery: String
+    ): Resource<ApiResponse> {
+        return responseToResult(
+            remoteDataSource.getSearchedNews(
+                country,
+                page,
+                searchQuery,
+                category
+            )
+        )
     }
 
-    private fun responseToResult(response: Response<ApiResponse>) : Resource<ApiResponse> {
-        if (response.isSuccessful){
-            response.body()?.let { result->
+    private fun responseToResult(response: Response<ApiResponse>): Resource<ApiResponse> {
+        if (response.isSuccessful) {
+            response.body()?.let { result ->
                 return Resource.Success(result)
             }
         }

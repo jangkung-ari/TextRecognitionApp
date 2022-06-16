@@ -19,7 +19,12 @@ class NewsViewModelFactory(
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return NewsViewModel(
-            app, getNewsHeadlineUseCase,getSearchedNewsUseCase,saveNewsUseCase,getSaveNewsUseCase,deleteSaveNewsUseCase
+            app,
+            getNewsHeadlineUseCase,
+            getSearchedNewsUseCase,
+            saveNewsUseCase,
+            getSaveNewsUseCase,
+            deleteSaveNewsUseCase
         ) as T
     }
 }

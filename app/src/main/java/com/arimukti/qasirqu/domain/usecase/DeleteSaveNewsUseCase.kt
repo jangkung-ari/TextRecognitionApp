@@ -5,7 +5,7 @@ import com.arimukti.qasirqu.domain.repository.NewsRepository
 
 class DeleteSaveNewsUseCase(private val repository: NewsRepository) {
 
-    suspend fun execute(article: Article){
+    suspend fun execute(article: Article) {
         repository.deleteNews(article)
     }
 

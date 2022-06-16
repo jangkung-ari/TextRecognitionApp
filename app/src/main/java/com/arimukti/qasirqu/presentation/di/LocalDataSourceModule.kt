@@ -15,7 +15,7 @@ class LocalDataSourceModule {
 
     @Singleton
     @Provides
-    fun provideLocalDataSource(articleDao: ArticleDao) : NewsLocalDataSource {
+    fun provideLocalDataSource(articleDao: ArticleDao): NewsLocalDataSource {
         return NewsLocalDataSourceImpl(articleDao)
     }
 }

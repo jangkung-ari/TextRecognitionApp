@@ -36,7 +36,7 @@ class SavedFragment : Fragment() {
         viewModel = (activity as MainActivity).viewModel
         newsAdapter = (activity as MainActivity).savedNewsAdapter
         newsAdapter.setOnItemClickListener {
-            if (it!=null){
+            if (it != null) {
                 val action = SavedFragmentDirections.actionSavedFragmentToInfoFragment(article = it)
                 findNavController().navigate(action)
             }
@@ -56,9 +56,10 @@ class SavedFragment : Fragment() {
 
         }
 
-        val itemTouchHelper = object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN,
+        val itemTouchHelper = object : ItemTouchHelper.SimpleCallback(
+            ItemTouchHelper.UP or ItemTouchHelper.DOWN,
             ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
-            ) {
+        ) {
             override fun onMove(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
@@ -71,8 +72,8 @@ class SavedFragment : Fragment() {
                 val position = viewHolder.adapterPosition
                 val article = newsAdapter.differ.currentList[position]
                 viewModel.deleteArticles(article)
-                Snackbar.make(view,"Deleted",Snackbar.LENGTH_LONG).apply {
-                    setAction("Undo"){
+                Snackbar.make(view, "Deleted", Snackbar.LENGTH_LONG).apply {
+                    setAction("Undo") {
                         viewModel.saveArticle(article)
                     }
                     show()
@@ -86,7 +87,7 @@ class SavedFragment : Fragment() {
         }
 
         initRecyclerView()
-        viewModel.getSavedNews().observe(viewLifecycleOwner){
+        viewModel.getSavedNews().observe(viewLifecycleOwner) {
             newsAdapter.differ.submitList(it)
         }
 
@@ -96,7 +97,7 @@ class SavedFragment : Fragment() {
 
     private fun initRecyclerView() {
         binding.savedRecyclerView.apply {
-            layoutManager = LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,true)
+            layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, true)
             adapter = newsAdapter
 
         }

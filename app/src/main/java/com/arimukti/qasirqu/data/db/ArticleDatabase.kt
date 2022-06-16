@@ -12,5 +12,5 @@ import com.arimukti.qasirqu.data.model.Article
 )
 @TypeConverters(Converters::class)
 abstract class ArticleDatabase : RoomDatabase() {
-    abstract fun getArticleDao() : ArticleDao
+    abstract fun getArticleDao(): ArticleDao
 }

@@ -20,8 +20,8 @@ import kotlinx.coroutines.launch
 
 class NewsFragment : Fragment() {
 
-    private lateinit var viewModel : NewsViewModel
-    private lateinit var binding : FragmentNewsBinding
+    private lateinit var viewModel: NewsViewModel
+    private lateinit var binding: FragmentNewsBinding
     private lateinit var adapter: NewsAdapter
     private var country = "us"
     private var page = 1
@@ -51,7 +51,7 @@ class NewsFragment : Fragment() {
         initRecyclerView()
         viewNewsList()
         adapter.setOnItemClickListener {
-            if(it!=null){
+            if (it != null) {
                 val action = NewsFragmentDirections.actionNewsFragmentToInfoFragment(it)
                 findNavController().navigate(action)
             }
@@ -71,9 +71,9 @@ class NewsFragment : Fragment() {
 
         }
         adapter.setOnBookmarkClickListener {
-            if(it!=null){
+            if (it != null) {
                 viewModel.saveArticle(it)
-                Snackbar.make(view,"Bookmarked",Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(view, "Bookmarked", Snackbar.LENGTH_SHORT).show()
             }
 
         }
@@ -86,14 +86,14 @@ class NewsFragment : Fragment() {
 
 
         binding.newsChipGroup.setOnCheckedChangeListener { _, checkedId ->
-            when(checkedId){
-                binding.newsChipGeneral.id -> {category = "general"}
-                binding.newsChipBusiness.id -> {category = "business"}
-                binding.newsChipEntertainment.id -> {category = "entertainment"}
-                binding.newsChipHealth.id -> {category = "health"}
-                binding.newsChipScience.id -> {category = "science"}
-                binding.newsChipSports.id -> {category = "sports"}
-                binding.newsChipTechnology.id -> {category = "technology"}
+            when (checkedId) {
+                binding.newsChipGeneral.id -> category = "general"
+                binding.newsChipBusiness.id -> category = "business"
+                binding.newsChipEntertainment.id -> category = "entertainment"
+                binding.newsChipHealth.id -> category = "health"
+                binding.newsChipScience.id -> category = "science"
+                binding.newsChipSports.id -> category = "sports"
+                binding.newsChipTechnology.id -> category = "technology"
             }
             viewNewsList()
             //Toast.makeText(requireContext(),"$category",Toast.LENGTH_SHORT).show()
@@ -128,11 +128,12 @@ class NewsFragment : Fragment() {
 //        }
 //    }
 
-    private fun setSearchView(){
+    private fun setSearchView() {
 
-        binding.newsSearchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
+        binding.newsSearchView.setOnQueryTextListener(object :
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
-                viewModel.searchedNewsHeadlines(country,category,page,p0.toString())
+                viewModel.searchedNewsHeadlines(country, category, page, p0.toString())
                 viewSearchList()
                 return false
             }
@@ -140,7 +141,7 @@ class NewsFragment : Fragment() {
             override fun onQueryTextChange(p0: String?): Boolean {
                 MainScope().launch {
                     delay(2500)
-                    viewModel.searchedNewsHeadlines(country,category,page,p0.toString())
+                    viewModel.searchedNewsHeadlines(country, category, page, p0.toString())
                     viewSearchList()
                 }
                 return false
@@ -156,18 +157,18 @@ class NewsFragment : Fragment() {
 
     }
 
-    private fun viewSearchList(){
-        if(view != null){
-            viewModel.searchedNews.observe(viewLifecycleOwner){response->
-                when(response){
+    private fun viewSearchList() {
+        if (view != null) {
+            viewModel.searchedNews.observe(viewLifecycleOwner) { response ->
+                when (response) {
                     is Resource.Success -> {
                         hideProgressBar()
                         response.data?.let {
                             adapter.differ.submitList(it.articles.toList())
-                            pages = if (it.totalResults%20 == 0) {
-                                it.totalResults/20
-                            }else{
-                                it.totalResults/20 +1
+                            pages = if (it.totalResults % 20 == 0) {
+                                it.totalResults / 20
+                            } else {
+                                it.totalResults / 20 + 1
                             }
                             isLastPage = page == pages
                         }
@@ -175,7 +176,8 @@ class NewsFragment : Fragment() {
                     is Resource.Error -> {
                         hideProgressBar()
                         response.message?.let {
-                            Toast.makeText(activity,"An error occured : $it",Toast.LENGTH_SHORT).show()
+                            Toast.makeText(activity, "An error occured : $it", Toast.LENGTH_SHORT)
+                                .show()
                         }
                     }
                     is Resource.Loading -> {
@@ -187,18 +189,18 @@ class NewsFragment : Fragment() {
 
     }
 
-    private fun viewNewsList(){
-        viewModel.getNewsHeadlines(country,page,category)
+    private fun viewNewsList() {
+        viewModel.getNewsHeadlines(country, page, category)
         viewModel.newsHeadlines.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is Resource.Success -> {
                     hideProgressBar()
                     response.data?.let {
                         adapter.differ.submitList(it.articles.toList())
-                        pages = if (it.totalResults%20 == 0) {
-                            it.totalResults/20
-                        }else{
-                            it.totalResults/20 +1
+                        pages = if (it.totalResults % 20 == 0) {
+                            it.totalResults / 20
+                        } else {
+                            it.totalResults / 20 + 1
                         }
                         isLastPage = page == pages
                     }
@@ -206,7 +208,8 @@ class NewsFragment : Fragment() {
                 is Resource.Error -> {
                     hideProgressBar()
                     response.message?.let {
-                        Toast.makeText(activity,"An error occured : $it",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(activity, "An error occured : $it", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
                 is Resource.Loading -> {
@@ -224,12 +227,12 @@ class NewsFragment : Fragment() {
 
     }
 
-    private fun showProgressBar(){
+    private fun showProgressBar() {
         isLoading = true
         binding.newsProgressBar.visibility = View.VISIBLE
     }
 
-    private fun hideProgressBar(){
+    private fun hideProgressBar() {
         isLoading = false
         binding.newsProgressBar.visibility = View.INVISIBLE
     }

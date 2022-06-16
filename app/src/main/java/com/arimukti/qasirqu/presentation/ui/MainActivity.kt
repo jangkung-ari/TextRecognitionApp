@@ -15,12 +15,14 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var factory: NewsViewModelFactory
-    lateinit var viewModel : NewsViewModel
+    lateinit var viewModel: NewsViewModel
+
     @Inject
     lateinit var newsAdapter: NewsAdapter
+
     @Inject
     lateinit var savedNewsAdapter: SavedNewsAdapter
-    private lateinit var binding : ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -28,8 +30,9 @@ class MainActivity : AppCompatActivity() {
         //val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView2) as NavHostFragment
         //val navController = navHostFragment.navController
         //binding.bottomNavigationView.setupWithNavController(navController)
-        viewModel = ViewModelProvider(this,factory)[NewsViewModel::class.java]
+        viewModel = ViewModelProvider(this, factory)[NewsViewModel::class.java]
     }
+
     //to support navigate up
     override fun onSupportNavigateUp(): Boolean {
         return super.onSupportNavigateUp()

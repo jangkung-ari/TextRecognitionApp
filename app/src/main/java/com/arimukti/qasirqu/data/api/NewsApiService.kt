@@ -11,27 +11,27 @@ interface NewsApiService {
     @GET("v2/top-headlines")
     suspend fun getTopHeadlines(
         @Query("country")
-        country:String,
+        country: String,
         @Query("category")
-        category:String,
+        category: String,
         @Query("page")
-        page:Int,
+        page: Int,
         @Query("apiKey")
-        apiKey:String = BuildConfig.API_KEY
-    ) : Response<ApiResponse>
+        apiKey: String = BuildConfig.API_KEY
+    ): Response<ApiResponse>
 
     @GET("v2/top-headlines")
     suspend fun getSearchedTopHeadlines(
         @Query("country")
-        country:String,
+        country: String,
         @Query("q")
-        searchQuery : String,
+        searchQuery: String,
         @Query("category")
-        category:String,
+        category: String,
         @Query("page")
-        page:Int,
+        page: Int,
         @Query("apiKey")
-        apiKey:String = BuildConfig.API_KEY
-    ) : Response<ApiResponse>
+        apiKey: String = BuildConfig.API_KEY
+    ): Response<ApiResponse>
 
 }

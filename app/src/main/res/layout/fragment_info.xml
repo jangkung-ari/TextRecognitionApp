@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.arimukti.qasirqu.presentation.ui.InfoFragment">
 
-
     <WebView
         android:id="@+id/info_web_view"
         android:layout_width="0dp"

@@ -16,9 +16,9 @@ import com.arimukti.qasirqu.presentation.viewmodel.NewsViewModel
 
 class WebViewFragment : Fragment() {
 
-    private lateinit var binding : FragmentWebViewBinding
+    private lateinit var binding: FragmentWebViewBinding
     private lateinit var article: Article
-    private lateinit var viewModel : NewsViewModel
+    private lateinit var viewModel: NewsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +27,11 @@ class WebViewFragment : Fragment() {
 
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_web_view, container, false)
     }
@@ -40,7 +44,7 @@ class WebViewFragment : Fragment() {
 
         binding.webView.apply {
             webViewClient = WebViewClient()
-            if(article.url != null && !article.url.isNullOrEmpty()){
+            if (article.url != null && !article.url.isNullOrEmpty()) {
                 loadUrl(article.url!!)
             }
         }
@@ -63,7 +67,6 @@ class WebViewFragment : Fragment() {
         }
 
     }
-
 
 
 }
