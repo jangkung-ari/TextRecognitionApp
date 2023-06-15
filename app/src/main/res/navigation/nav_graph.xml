@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/newsFragment"
-        android:name="com.arimukti.qasirqu.presentation.ui.NewsFragment"
+        android:name="com.arimukti.myhealth.presentation.ui.fragment.NewsFragment"
         android:label="fragment_news"
         tools:layout="@layout/fragment_news">
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/savedFragment"
-        android:name="com.arimukti.qasirqu.presentation.ui.SavedFragment"
+        android:name="com.arimukti.myhealth.presentation.ui.fragment.SavedFragment"
         android:label="fragment_saved"
         tools:layout="@layout/fragment_saved">
         <action
@@ -28,24 +28,24 @@
     </fragment>
     <fragment
         android:id="@+id/infoFragment"
-        android:name="com.arimukti.qasirqu.presentation.ui.InfoFragment"
+        android:name="com.arimukti.myhealth.presentation.ui.fragment.InfoFragment"
         android:label="fragment_info"
         tools:layout="@layout/fragment_info">
         <argument
             android:name="article"
-            app:argType="com.arimukti.qasirqu.data.model.Article" />
+            app:argType="com.arimukti.myhealth.data.model.Article" />
         <action
             android:id="@+id/action_infoFragment_to_webViewFragment"
             app:destination="@id/webViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/webViewFragment"
-        android:name="com.arimukti.qasirqu.presentation.ui.WebViewFragment"
+        android:name="com.arimukti.myhealth.presentation.ui.fragment.WebViewFragment"
         android:label="fragment_web_view"
         tools:layout="@layout/fragment_web_view">
         <argument
             android:name="article"
-            app:argType="com.arimukti.qasirqu.data.model.Article" />
+            app:argType="com.arimukti.myhealth.data.model.Article" />
     </fragment>
 
 </navigation>
