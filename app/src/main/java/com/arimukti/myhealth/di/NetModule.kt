@@ -1,4 +1,4 @@
-package com.arimukti.myhealth.presentation.di
+package com.arimukti.myhealth.di
 
 import com.arimukti.myhealth.BuildConfig
 import com.arimukti.myhealth.data.api.HealthApiService

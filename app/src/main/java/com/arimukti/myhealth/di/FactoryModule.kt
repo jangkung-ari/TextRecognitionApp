@@ -1,4 +1,4 @@
-package com.arimukti.myhealth.presentation.di
+package com.arimukti.myhealth.di
 
 import android.app.Application
 import com.arimukti.myhealth.domain.usecase.*

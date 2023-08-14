@@ -1,4 +1,4 @@
-package com.arimukti.myhealth.presentation.di
+package com.arimukti.myhealth.di
 
 import com.arimukti.myhealth.domain.usecase.*
 import com.arimukti.myhealth.domain.repository.MyHealthRepository

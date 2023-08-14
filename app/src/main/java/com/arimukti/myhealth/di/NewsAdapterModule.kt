@@ -1,4 +1,4 @@
-package com.arimukti.myhealth.presentation.di
+package com.arimukti.myhealth.di
 
 import com.arimukti.myhealth.presentation.adapter.NewsAdapter
 import dagger.Module
