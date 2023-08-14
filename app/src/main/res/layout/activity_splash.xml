@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/material_dynamic_primary40">
+    android:background="@color/color_primary">
 
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
