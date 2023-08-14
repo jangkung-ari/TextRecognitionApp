@@ -1,2 +1,2 @@
-# MyHealth
-None
+# TextRecognitionApp
+Android
