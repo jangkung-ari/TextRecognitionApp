@@ -1,7 +1,6 @@
 package com.arimukti.textrecognitionapp.di
 
 import android.app.Application
-import com.arimukti.textrecognitionapp.domain.usecase.*
 import com.arimukti.textrecognitionapp.presentation.viewmodel.MainViewModelFactory
 import dagger.Module
 import dagger.Provides

@@ -59,28 +59,6 @@ android {
             buildConfigField("String", "IMAGE_SOURCE", '"GALLERY"')
         }
     }
-//    sourceSets {
-//        RedCamera {
-//            res {
-//                srcDirs 'src/RedCameraDebug/res'
-//            }
-//        }
-//        GreenCamera {
-//            res {
-//                srcDirs 'src/GreenCameraDebug/res'
-//            }
-//        }
-//        RedGallery {
-//            res {
-//                srcDirs 'src/RedGalleryDebug/res'
-//            }
-//        }
-//        GreenGallery {
-//            res {
-//                srcDirs 'src/GreenGalleryDebug/res'
-//            }
-//        }
-//    }
 }
 
 dependencies {
