@@ -6,10 +6,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.arimukti.textrecognitionapp.BuildConfig
 import com.arimukti.textrecognitionapp.databinding.ActivityMainBinding
 import com.arimukti.textrecognitionapp.presentation.viewmodel.MainViewModel
 import com.arimukti.textrecognitionapp.presentation.viewmodel.MainViewModelFactory
 import com.github.dhaval2404.imagepicker.ImagePicker
+import com.github.dhaval2404.imagepicker.constant.ImageProvider
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task
@@ -61,11 +63,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupActions() = with(binding) {
+        val imageProvider = if (BuildConfig.IMAGE_SOURCE == "CAMERA") ImageProvider.CAMERA
+        else ImageProvider.GALLERY
+
         btnInput.setOnClickListener {
             ImagePicker.with(this@MainActivity)
                 .crop()
-//                .galleryOnly()
-//                .cameraOnly()
+                .provider(imageProvider)
                 .compress(1024)
                 .maxResultSize(1080, 1080)
                 .start()

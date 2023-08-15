@@ -19,8 +19,11 @@ android {
         buildConfigField("String","API_KEY",MY_KEY)
         buildConfigField("String","BASE_URL",MY_URL)
     }
-
     buildTypes {
+        debug {
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = "-debug"
+        }
         release {
             minifyEnabled true
             shrinkResources true
@@ -37,6 +40,47 @@ android {
     buildFeatures{
         viewBinding = true
     }
+    flavorDimensions 'colors', 'image_source'
+    productFlavors {
+        red {
+            dimension 'colors'
+            versionNameSuffix = "-red"
+        }
+        green {
+            dimension 'colors'
+            versionNameSuffix = "-green"
+        }
+        camera {
+            dimension 'image_source'
+            buildConfigField("String", "IMAGE_SOURCE", '"CAMERA"')
+        }
+        gallery {
+            dimension 'image_source'
+            buildConfigField("String", "IMAGE_SOURCE", '"GALLERY"')
+        }
+    }
+//    sourceSets {
+//        RedCamera {
+//            res {
+//                srcDirs 'src/RedCameraDebug/res'
+//            }
+//        }
+//        GreenCamera {
+//            res {
+//                srcDirs 'src/GreenCameraDebug/res'
+//            }
+//        }
+//        RedGallery {
+//            res {
+//                srcDirs 'src/RedGalleryDebug/res'
+//            }
+//        }
+//        GreenGallery {
+//            res {
+//                srcDirs 'src/GreenGalleryDebug/res'
+//            }
+//        }
+//    }
 }
 
 dependencies {
